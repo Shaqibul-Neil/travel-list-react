@@ -7,17 +7,21 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
     //console.log(e);
+
+    //now using these input values lets create a new obj. needs to be inside this handlesubmit function otherwise on every change a new obj will create. bt in here only when we press Enter or click a new obj will be created
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    console.log(newItem);
   };
 
-  const handleChange = e => {
-    //console.log(e.target.value);
-    setDescription(e.target.value);
-  };
+  // const handleChange = e => {
+  //   //console.log(e.target.value);
+  //   setDescription(e.target.value);
+  // };
 
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your 😍 trip?</h3>
-      <select value={quantity} onChange={e => setQuantity(e.target.value)}>
+      <select value={quantity} onChange={e => setQuantity(+e.target.value)}>
         {Array.from({ length: 20 }, (_, index) => index + 1).map(num => (
           <option value={num} key={num}>
             {num}
@@ -28,7 +32,7 @@ const Form = () => {
         type="text"
         placeholder="Item..."
         value={description}
-        onChange={handleChange}
+        onChange={e => setDescription(e.target.value)}
       />
       <button>Add</button>
     </form>

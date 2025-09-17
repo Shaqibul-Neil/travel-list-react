@@ -5,7 +5,14 @@ import PackingList from './components/PackingList';
 import Stats from './components/Stats';
 
 function App() {
-  return;
+  return (
+    <div className="app">
+      <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
+    </div>
+  );
 }
 
 export default App;

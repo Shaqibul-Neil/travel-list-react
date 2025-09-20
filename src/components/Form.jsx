@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Form = () => {
+const Form = ({ handleAddItems }) => {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
 
@@ -8,9 +8,17 @@ const Form = () => {
     e.preventDefault();
     //console.log(e);
 
-    //now using these input values lets create a new obj. needs to be inside this handlesubmit function otherwise on every change a new obj will create. bt in here only when we press Enter or click a new obj will be created
+    //if description is empty the form should not be allowed to submit
+    if (!description) alert('Please add some items');
+
+    //now using these input values lets create a new obj. needs to be inside this handleSubmit function otherwise on every change a new obj will create. bt in here only when we press Enter or click a new obj will be created
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
+    handleAddItems(newItem);
+    //after submission go back to original state like emptying the input fields
+
+    setDescription('');
+    setQuantity(1);
   };
 
   // const handleChange = e => {

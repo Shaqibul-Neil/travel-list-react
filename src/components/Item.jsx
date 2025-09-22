@@ -1,16 +1,13 @@
-import { useState } from 'react';
-
-const Item = ({ item, handleDeleteItems }) => {
+const Item = ({ item, handleDeleteItems, handleToggleItem }) => {
   const { description, quantity, packed } = item;
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleChange = () => {
-    setIsChecked(!isChecked);
-  };
 
   return (
     <li>
-      <input type="checkbox" onChange={handleChange} />
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => handleToggleItem(item.id)}
+      />
       <span style={packed ? { textDecoration: 'line-through' } : {}}>
         {description} {quantity}
       </span>

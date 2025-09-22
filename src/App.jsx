@@ -14,11 +14,22 @@ function App() {
     const filteredItems = items.filter(item => item.id !== id);
     setItems(filteredItems);
   };
+
+  const handleToggleItem = id => {
+    const checkedItems = items.map(item =>
+      item.id === id ? { ...item, packed: !item.packed } : item
+    );
+    setItems(checkedItems);
+  };
   return (
     <div className="app">
       <Logo />
       <Form handleAddItems={handleAddItems} />
-      <PackingList items={items} handleDeleteItems={handleDeleteItems} />
+      <PackingList
+        items={items}
+        handleDeleteItems={handleDeleteItems}
+        handleToggleItem={handleToggleItem}
+      />
       <Stats />
     </div>
   );

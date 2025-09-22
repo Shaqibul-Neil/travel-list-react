@@ -13,7 +13,7 @@ const Form = ({ handleAddItems }) => {
 
     //now using these input values lets create a new obj. needs to be inside this handleSubmit function otherwise on every change a new obj will create. bt in here only when we press Enter or click a new obj will be created
     const newItem = { description, quantity, packed: false, id: Date.now() };
-    console.log(newItem);
+    //console.log(newItem);
     handleAddItems(newItem);
     //after submission go back to original state like emptying the input fields
 

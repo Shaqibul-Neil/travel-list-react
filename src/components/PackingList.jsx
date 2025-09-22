@@ -4,12 +4,16 @@ const initialItems = [
   { id: 2, description: 'Socks', quantity: 12, packed: true },
 ];
 
-const PackingList = ({ items }) => {
+const PackingList = ({ items, handleDeleteItems }) => {
   return (
     <div className="list">
       <ul>
         {items.map(item => (
-          <Item item={item} key={item.id} />
+          <Item
+            item={item}
+            key={item.id}
+            handleDeleteItems={handleDeleteItems}
+          />
         ))}
       </ul>
     </div>

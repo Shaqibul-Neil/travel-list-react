@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Item = ({ item }) => {
+const Item = ({ item, handleDeleteItems }) => {
   const { description, quantity, packed } = item;
   const [isChecked, setIsChecked] = useState(false);
 
@@ -10,10 +10,11 @@ const Item = ({ item }) => {
 
   return (
     <li>
-      <input type="checkbox" onChange={handleChange} checked={packed} />
+      <input type="checkbox" onChange={handleChange} />
       <span style={packed ? { textDecoration: 'line-through' } : {}}>
         {description} {quantity}
       </span>
+      <button onClick={() => handleDeleteItems(item.id)}>❌</button>
     </li>
   );
 };

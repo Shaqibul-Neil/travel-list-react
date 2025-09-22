@@ -10,12 +10,15 @@ function App() {
   const handleAddItems = item => {
     setItems(items => [...items, item]);
   };
-
+  const handleDeleteItems = id => {
+    const filteredItems = items.filter(item => item.id !== id);
+    setItems(filteredItems);
+  };
   return (
     <div className="app">
       <Logo />
       <Form handleAddItems={handleAddItems} />
-      <PackingList items={items} />
+      <PackingList items={items} handleDeleteItems={handleDeleteItems} />
       <Stats />
     </div>
   );

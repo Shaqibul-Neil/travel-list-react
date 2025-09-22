@@ -15,6 +15,9 @@ function App() {
     const filteredItems = items.filter(item => item.id !== id);
     setItems(filteredItems);
   };
+  const handleClearList = () => {
+    setItems([]);
+  };
 
   const handleToggleItem = id => {
     const checkedItems = items.map(
@@ -30,6 +33,7 @@ function App() {
         items={items}
         handleDeleteItems={handleDeleteItems}
         handleToggleItem={handleToggleItem}
+        handleClearList={handleClearList}
       />
       <Stats items={items} />
     </div>

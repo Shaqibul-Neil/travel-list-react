@@ -16,7 +16,8 @@ function App() {
     setItems(filteredItems);
   };
   const handleClearList = () => {
-    setItems([]);
+    const confirmed = window.confirm('Are sure you want delete everything?');
+    confirmed ? setItems([]) : '';
   };
 
   const handleToggleItem = id => {
